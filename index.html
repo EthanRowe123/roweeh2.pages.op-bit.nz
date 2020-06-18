@@ -8,7 +8,7 @@
 <style>
 body, html {
   height: 100%;
-  font-family: "Inconsolata", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .bgimg {
@@ -45,27 +45,62 @@ body, html {
 <!-- Add a background color and large text to the whole page -->
 <div class="w3-sand w3-grayscale w3-large">
 
-<!-- About Container -->
+<!-- Technical Container -->
 <div class="w3-container" id="technical">
   <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE CAFE</span></h5>
-    <p>The Cafe was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <p>In addition to our full espresso and brew bar menu, we serve fresh made-to-order breakfast and lunch sandwiches, as well as a selection of sides and salads and other good stuff.</p>
-    <div class="w3-panel w3-leftbar w3-light-grey">
-      <p><i>"Use products from nature for what it's worth - but never too early, nor too late." Fresh is the new sweet.</i></p>
-      <p>Chef, Coffeeist and Owner: Liam Brown</p>
-    </div>
-    <img src="/w3images/coffeeshop.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
-    <p><strong>Opening hours:</strong> everyday from 6am to 5pm.</p>
-    <p><strong>Address:</strong> 15 Adr street, 5015, NY</p>
+    <h4 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Technical Achievements</span></h4>
+
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Getting Started</span></h5>
+    <p>As I started this project, I instantly realised I was out of my depth.  The first task that I was assigned, was to make a button inside the in-game pause menu redirect back to the main menu. I thought this would be easy since I have used C# before in the degree, but Unity was completely new to me and was very confusing. It was super confusing because there was lots of code that I did not understand and so many different parts of Unity that I needed to learn. An experienced team member (project 2 student) told me to make a test game to gain a basic understanding of Unity and implement the working button inside the pause menu in there. I followed the first six tutorials from <a href="https://www.youtube.com/watch?v=IlKaB1etrik">this getting to learn unity basics tutorial</a> before trying to add the pause menu from this <a href="https://www.youtube.com/watch?v=JivuXdrIHK0">tutorial</a> to the gameThe exit button in this menu would redirect to a different scene, just like what I wanted to 
+      implement inside of SKIN. I did this by using the SceneManager’s Load Scene <a href="https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html">feature.</a> 
+    </p>
+    <img src="resources/img/test_game_gameplay.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <p>
+      In this beginners tutorial I learned some basics of 3D Unity like object movement, camera following, collision between objects and basic navigation throughout Unity. Most of these basics where untransferable to SKIN since we already have player movement and collision but doing this tutorial game gave me a greater understanding of how to use Unity and how some of the components in SKIN interacted with each other.
+    </p>
+    <img src="resources/img/test_game_menu.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <p>
+      The pause menu was the most important part of the tutorial game. It was not a part of the original tutorial and was something I had to go out and research independently.  The code below is what I used to return to the main menu. This code changes the scene when the menu button is clicked. I designed it so that the scenes name could be passed through as a variable so a different scene could be used other than MainMenu. I did this because it’s easier and more convenient to change the scene that will be switched to inside Unity instead of a random script. 
+    </p>
+    <img src="resources/img/test_game_scene_loader.png" style="width:50%;max-width:1000px" class="w3-margin-top">
+    <p>
+      The second challenge was getting the scene changing from the demo game I made into SKIN. There was a weird bug that when anything inside the pause menu was clicked, the game would just resume. After looking at it with Adon he pointed out that the button spanned the whole screen. Even though the button appeared to only take up a small space, its clickable area was overlapping with all the other buttons, making them unusable. Fixing this was super easy since we all that was required was resizing the buttons clickable area.
+    </p>
+    <p>
+      The third challenge for me was to get the mouse pointer showing inside of the game. When we started playing the game the mouse cursor was invisible. This was due to a change another student had made a previous semester. To fix this, I modified the PlayerPauseMenu script so that when the game is paused, the cursor will appear and when the game resumes, either by pressing the button or pressing esc, the cursor will be hidden. 
+      <br><img src="resources/img/skin_cursor1.png" style="width:50%;max-width:1000px" class="w3-margin-top"><br>
+      In the code above you can see that I also tried to fix the cursors lockstate. I found a way to make it work within the game but with one minor hiccup being the ingame circle menu for items being unable to be used. I tried fixing this by placing code to change the lockstate in many different parts of the code but none of the changes places where I put it seemed to work. 
+    </p>
+    <p>
+      Below is the player script and this snippet is where the inputs for detecting if the circle menu is to open is being checked. I thought making it so the mouse went from being locked into the center to being able to freely move would fix this problem but it didn’t seem to work. Since I could not seem to get it working, I just rolled back with the changes and moved on to the next task.
+      <br><img src="resources/img/skin_cursor2.png" style="width:50%;max-width:1000px" class="w3-margin-top">
+    </p>
+    
+    <p>
+      Below is a video showing the mouse working showing as intended and the pause menu buttons redirecting to their correct places.
+      <br>
+      <video style="width:100%;max-width:1000px" controls>
+        <source src="resources/vid/navigation.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </p>
+
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">The Main Menu</span></h5>
+    <p>
+      My second big contribution towards SKIN was towards the main menu. 
+    </p>
+    <br><img src="resources/img/skin_menu_original.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <p>
+      This is the original version of the main menu before Adon asked me to redesign it. The first thing I had to do was remove the opening scene from the menu scene. I had to do this because every time I loaded up the main menu from in game it would play the entire opening movie. It would also play it every time I wanted to test what the menu looked like. I used the same skills I learned from doing the pause menu button redirecting to the main menu by implementing a LoadScene from SceneManager that will be called after the opening movie is finished, that will change the scene to the main menu. This means that the opening movie will only play when the game is first launched with the opening movie scene selected in the build settings. 
+    </p>
   </div>
 </div>
-
-<!-- Menu Container -->
+1
+<!-- Professional Container -->
 <div class="w3-container" id="professional">
   <div class="w3-content" style="max-width:700px">
  
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Professional</span></h5>
   
     <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
   </div>
@@ -75,7 +110,7 @@ body, html {
 <div class="w3-container" id="technical">
   <div class="w3-content" style="max-width:700px">
  
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">IDKLMAO</span></h5>
   
     <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
   </div>
